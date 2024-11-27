@@ -1,85 +1,173 @@
+/* Définition des couleurs principales */
+:root {
+  --background-color: #121212;
+  --primary-color: #1f80e0;
+  --secondary-color: #ff5722;
+  --text-color: #e1e1e1;
+  --border-color: #333;
+  --button-hover-color: #0f66b7;
+  --header-color: #222;
+  --card-background-color: #1e1e1e;
+  --input-background-color: #2a2a2a;
+  --input-border-color: #444;
+}
+
+/* Corps de la page */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  font-family: 'Arial', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
   margin: 0;
   padding: 0;
-  color: #333;
 }
 
+/* Styles pour le conteneur principal */
 .App {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 20px auto;
   padding: 20px;
-  background: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  background: var(--card-background-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
 }
 
+/* En-tête */
 h1 {
-  color: #0077ff;
+  color: var(--primary-color);
   text-align: center;
-}
-
-.task-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  font-size: 36px;
   margin-bottom: 20px;
 }
 
-.task-form input,
-.task-form select,
-.task-form button {
+/* Filters Section */
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.filters select, .filters button {
   padding: 10px;
+  font-size: 16px;
+  background-color: var(--input-background-color);
+  color: var(--text-color);
+  border: 1px solid var(--input-border-color);
+  border-radius: 4px;
+}
+
+.filters button {
+  background-color: var(--primary-color);
+  color: #fff;
+  cursor: pointer;
+  border: none;
+}
+
+.filters button:hover {
+  background-color: var(--button-hover-color);
+}
+
+/* Liste des produits */
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product {
+  background: var(--card-background-color);
+  padding: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  width: 250px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.product:hover {
+  transform: scale(1.05);
+}
+
+.product h3 {
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.product p {
+  color: var(--text-color);
+  font-size: 14px;
+}
+
+.product button {
+  background-color: var(--secondary-color);
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.product button:hover {
+  background-color: #e64a19;
+}
+
+/* Panier */
+.cart {
+  margin-top: 40px;
+}
+
+.cart h2 {
+  color: var(--primary-color);
+  font-size: 28px;
+}
+
+.cart-item {
+  background: var(--card-background-color);
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.cart-item h3 {
+  color: var(--primary-color);
+  margin: 0;
+}
+
+/* Modifications globales pour les boutons */
+button {
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Formulaire d'ajout de produit */
+.input-field {
+  background-color: var(--input-background-color);
+  color: var(--text-color);
+  border: 1px solid var(--input-border-color);
+  border-radius: 4px;
+  padding: 10px;
+  width: 100%;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+input[type="text"] {
   font-size: 16px;
 }
 
-.task-form button {
-  background-color: #0077ff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.task-form button:hover {
-  background-color: #0056cc;
-}
-
-.task-list {
-  margin-top: 20px;
-}
-
-.task-category {
-  margin-bottom: 20px;
-}
-
-.task {
-  background: #f9f9f9;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 10px;
-}
-
-.task h3 {
-  margin: 0;
-  color: #0077ff;
-}
-
-.task p {
-  margin: 5px 0;
-}
-
-.task button {
-  background: #ff4d4d;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.task button:hover {
-  background: #cc0000;
+/* Responsive */
+@media (max-width: 768px) {
+  .product-list {
+    flex-direction: column;
+  }
 }
